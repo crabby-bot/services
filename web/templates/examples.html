@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🦀 OpenCrabby — Examples</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦀</text></svg>">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --deep: #070b1a;
+            --glow-cyan: #00d2ff;
+            --glow-green: #2ecc71;
+            --glow-red: #e63946;
+            --glow-orange: #ff9f43;
+            --foam: #e8f4f8;
+            --muted: rgba(232,244,248,0.45);
+        }
+
+        html, body {
+            background: var(--deep);
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--foam);
+            line-height: 1.6;
+            overflow-x: hidden;
+            touch-action: manipulation;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            min-height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+        }
+
+        .logo-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--glow-cyan);
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.2rem;
+            color: var(--glow-green);
+            margin: 2rem 0 1rem;
+            text-align: center;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .example-card {
+            background: rgba(255,255,255,.025);
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 18px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: all .25s;
+        }
+
+        .example-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--glow-cyan);
+        }
+
+        .example-title {
+            font-size: 1.1rem;
+            color: var(--glow-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .example-description {
+            color: var(--muted);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .example-link {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(0,210,255,.15), rgba(0,210,255,.1));
+            border: 1px solid rgba(0,210,255,.4);
+            color: var(--glow-cyan);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all .25s;
+            align-self: flex-start;
+        }
+
+        .example-link:hover {
+            background: linear-gradient(135deg, rgba(0,210,255,.25), rgba(0,210,255,.2));
+        }
+
+        @media (max-width: 600px) {
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="logo-text">opencrabby.com</div>
+        </div>
+
+        <h1 class="section-title">Project Examples</h1>
+
+        <div class="examples-grid">
+            <div class="example-card">
+                <h2 class="example-title">Apples to Oaks</h2>
+                <p class="example-description">A responsive, mobile-friendly website for a local tree care service in Leicester. Designed for suburban homeowners.</p>
+                <a href="/examples/apples-to-oaks" class="example-link">View Example →</a>
+            </div>
+            
+            <div class="example-card">
+                <h2 class="example-title">Coming Soon</h2>
+                <p class="example-description">More examples of web design and development projects will be added soon.</p>
+                <span class="example-link" style="opacity: 0.5; cursor: not-allowed;">Stay Tuned</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

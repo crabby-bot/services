@@ -1,0 +1,12 @@
+[Unit]
+Description=Crabby Web Server
+After=network.target
+
+[Service]
+User=crabby
+WorkingDirectory=/home/crabby/web
+ExecStart=/home/crabby/web/venv/bin/gunicorn --bind 127.0.0.1:5000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

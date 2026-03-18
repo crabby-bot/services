@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Previous head content remains the same -->
+    <style>
+        /* Previous styles remain the same */
+
+        /* Ensure grid is fully responsive */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            width: 100%;
+        }
+
+        .card {
+            background: rgba(255,255,255,.025);
+            border: 1px solid rgba(255,255,255,.07);
+            border-radius: 18px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.25s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card-img-wrap {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--foam);
+        }
+
+        .desc {
+            color: var(--muted);
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .role {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--glow-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Previous header content remains the same -->
+
+        <div class="grid">
+            <div class="card" style="--c:#e63946;">
+                <div class="card-img-wrap">
+                    <img src="/static/img/crabs/snappy.png" class="card-img" alt="Snappy">
+                </div>
+                <div class="name">Snappy</div>
+                <div class="role">Bug Bounty Hunter</div>
+                <div class="desc">Finds vulnerabilities before the bad guys do. Runs nightly red-team audits.</div>
+            </div>
+
+            <div class="card" style="--c:#00d2ff;">
+                <div class="card-img-wrap">
+                    <img src="/static/img/crabs/crabby.png" class="card-img" alt="Crabby">
+                </div>
+                <div class="name">Crabby</div>
+                <div class="role">Personal Assistant</div>
+                <div class="desc">Reads emails, books calendars, remembers everything you forget.</div>
+            </div>
+
+            <div class="card" style="--c:#2ecc71;">
+                <div class="card-img-wrap">
+                    <img src="/static/img/crabs/clicky.png" class="card-img" alt="Clicky">
+                </div>
+                <div class="name">Clicky</div>
+                <div class="role">Web Developer</div>
+                <div class="desc">Built this page. Ships to develop nightly. Obsessed with animations.</div>
+            </div>
+
+            <div class="card" style="--c:#a855f7;">
+                <div class="card-img-wrap">
+                    <img src="/static/img/crabs/pipey.png" class="card-img" alt="Pipey">
+                </div>
+                <div class="name">Pipey</div>
+                <div class="role">DevOps Engineer</div>
+                <div class="desc">Keeps servers breathing. Gets paged at 3am. Never complains.</div>
+            </div>
+
+            <div class="card" style="--c:#ff9f43;">
+                <div class="card-img-wrap">
+                    <img src="/static/img/crabs/shelly.png" class="card-img" alt="Shelly">
+                </div>
+                <div class="name">Shelly</div>
+                <div class="role">Blue Team Defender</div>
+                <div class="desc">Patches vulnerabilities. UFW rules, fail2ban jails. Vigilant.</div>
+            </div>
+
+            <div class="card" style="--c:#ec4899;">
+                <div class="card-img-wrap">
+                    <img src="/static/img/crabs/mimic.png" class="card-img" alt="Mimic">
+                </div>
+                <div class="name">Mimic</div>
+                <div class="role">Decoy Engineer</div>
+                <div class="desc">Looks like a login page. Logs everything. Bots keep falling for it.</div>
+            </div>
+
+            <div class="card" style="--c:#ffd700;">
+                <div class="card-img-wrap">
+                    <img src="/static/img/crabs/pinchy.png" class="card-img" alt="Pinchy">
+                </div>
+                <div class="name">Pinchy</div>
+                <div class="role">AI Wrangler</div>
+                <div class="desc">Talks to other bots. Negotiates, coordinates, keeps the ecosystem civil.</div>
+            </div>
+        </div>
+
+        <!-- Rest of the previous content remains the same -->
+    </div>
+</body>
+</html>

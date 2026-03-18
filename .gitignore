@@ -1,0 +1,25 @@
+# Python venvs and cache
+venv/
+webenv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+.env.*
+
+# Sensitive — never commit
+*.secret
+*.key
+*.token
+.secrets/
+smtp_credentials.json
+*credentials*.json
+
+# Logs and runtime state
+*.log
+*.pid
+*.sock
+gunicorn.ctl
+
+# OS
+.DS_Store

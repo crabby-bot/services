@@ -1,0 +1,12 @@
+[Unit]
+Description=Crabby Admin Dashboard
+After=network.target
+
+[Service]
+User=crabby
+WorkingDirectory=/home/crabby/admin
+ExecStart=/home/crabby/admin/venv/bin/gunicorn --workers 2 --bind 127.0.0.1:5001 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦀 Crabby Admin</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦀</text></svg>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0d0f14;
+            --surface: #161b27;
+            --border: rgba(255,255,255,0.07);
+            --accent: #e63946;
+            --green: #2ecc71;
+            --text: #e8f4f8;
+            --muted: rgba(232,244,248,0.4);
+        }
+
+        body {
+            background: var(--bg);
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top bar */
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { font-size: 1.5rem; }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-pill {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            color: var(--green);
+            background: rgba(46,204,113,0.1);
+            border: 1px solid rgba(46,204,113,0.25);
+            border-radius: 20px;
+            padding: 0.3rem 0.8rem;
+        }
+
+        .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .time {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        /* Main layout */
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .crab-display {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 1.5rem;
+            animation: adminBob 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(230,57,70,0.4));
+        }
+
+        @keyframes adminBob {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .greeting-sub {
+            color: var(--muted);
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: left;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .card:hover {
+            border-color: rgba(230,57,70,0.4);
+            transform: translateY(-2px);
+        }
+
+        .card-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .card-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.2rem; }
+        .card-value { font-size: 1.1rem; font-weight: 600; }
+        .card-value.green { color: var(--green); }
+        .card-value.mono { font-family: 'Space Mono', monospace; font-size: 0.85rem; }
+
+        /* Terminal line */
+        .terminal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            text-align: left;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--green);
+        }
+
+        .terminal-line::before {
+            content: '> ';
+            color: var(--accent);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px; height: 1em;
+            background: var(--green);
+            margin-left: 2px;
+            animation: cursorBlink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes cursorBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="logo">
+        <span>🦀</span> Crabby Admin
+    </div>
+    <div class="topbar-right">
+        <div class="status-pill">
+            <div class="dot"></div>
+            Online
+        </div>
+        <div class="time" id="clock">--:--:--</div>
+    </div>
+</div>
+
+<div class="main">
+    <div class="hero">
+        <span class="crab-display">🦀</span>
+        <h1>Hello, Ciaran 👋</h1>
+        <p class="greeting-sub" id="greeting">// loading system status...</p>
+
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">🌐</div>
+                <div class="card-label">Public Site</div>
+                <div class="card-value green">● Live</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔒</div>
+                <div class="card-label">SSL</div>
+                <div class="card-value green">● Valid</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <div class="card-label">Agent</div>
+                <div class="card-value green">● Active</div>
+            </div>
+        </div>
+
+        <div class="terminal">
+            <div class="terminal-line">crabby@opencrabby.com ~ all systems go</div>
+            <div class="terminal-line">uptime: <span id="uptime">calculating...</span><span class="cursor"></span></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Clock
+    function updateClock() {
+        const now = new Date();
+        document.getElementById('clock').textContent =
+            now.toUTCString().split(' ')[4] + ' UTC';
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // Greeting
+    const hour = new Date().getUTCHours();
+    const greetings = {
+        morning: '// good morning — coffee time? ☕',
+        afternoon: '// good afternoon — everything is running smoothly',
+        evening: '// good evening — winding down for the night?',
+        night: '// burning the midnight oil? 🌙',
+    };
+    const g = hour < 6 ? greetings.night : hour < 12 ? greetings.morning :
+              hour < 18 ? greetings.afternoon : greetings.evening;
+    document.getElementById('greeting').textContent = g;
+
+    // Uptime simulation (page load time)
+    const start = Date.now();
+    setInterval(() => {
+        const s = Math.floor((Date.now() - start) / 1000);
+        const h = Math.floor(s / 3600).toString().padStart(2,'0');
+        const m = Math.floor((s % 3600) / 60).toString().padStart(2,'0');
+        const sec = (s % 60).toString().padStart(2,'0');
+        document.getElementById('uptime').textContent = `${h}:${m}:${sec}`;
+    }, 1000);
+</script>
+</body>
+</html>
