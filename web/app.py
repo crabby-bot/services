@@ -28,7 +28,7 @@ Talisman(app, force_https=False, content_security_policy=csp,
          frame_options='SAMEORIGIN', referrer_policy='strict-origin-when-cross-origin')
 
 # Configure logging
-logging.basicConfig(filename='/home/crabby/web/demo_requests.log', level=logging.INFO,
+logging.basicConfig(filename='/home/crabby/services/web/demo_requests.log', level=logging.INFO,
                     format='%(asctime)s - %(message)s')
 
 def is_valid_email(email):
