@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apples to Oaks Tree Care — Tree Surgery in Leicester</title>
+    <meta name="description" content="Professional tree surgery in Leicester and surrounding areas. Fully qualified, fully insured. Call Steve today for a free quote.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --green-dark:  #2c5f2d;
+            --green-mid:   #3d7a3e;
+            --green-light: #7bc950;
+            --cream:       #f7f3ec;
+            --cream-dark:  #ede8df;
+            --brown:       #5d4037;
+            --text:        #2d2d2d;
+            --text-light:  #555;
+        }
+
+        html, body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text);
+            background: var(--cream);
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ── TOP BAR ── */
+        .topbar {
+            background: var(--green-dark);
+            color: white;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .topbar a { color: #a8e6a0; font-weight: 700; }
+
+        /* ── NAV ── */
+        nav {
+            background: white;
+            border-bottom: 3px solid var(--green-light);
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.9rem 0;
+        }
+
+        .nav-logo-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .nav-logo-text {
+            font-family: 'Merriweather', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--green-dark);
+            line-height: 1.2;
+        }
+
+        .nav-logo-sub {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            padding: 0.5rem 0.9rem;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .nav-links a:hover { background: var(--cream); color: var(--green-dark); }
+
+        .nav-call {
+            background: var(--green-dark) !important;
+            color: white !important;
+            border-radius: 6px !important;
+            padding: 0.55rem 1.1rem !important;
+            font-size: 1rem !important;
+        }
+
+        .nav-call:hover { background: var(--green-mid) !important; }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            height: 480px;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 60%;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(20,50,20,0.82) 40%, rgba(20,50,20,0.3));
+            display: flex;
+            align-items: center;
+            padding: 3rem 4rem;
+        }
+
+        .hero-content { max-width: 560px; color: white; }
+
+        .hero-content h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 2.4rem;
+            line-height: 1.25;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.8rem;
+            opacity: 0.92;
+        }
+
+        .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--green-light);
+            color: var(--green-dark);
+        }
+
+        .btn-primary:hover { background: #6ab840; }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover { background: rgba(255,255,255,0.15); }
+
+        /* ── TRUST BAR ── */
+        .trust-bar {
+            background: var(--green-dark);
+            color: white;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem 2rem;
+            font-size: 0.95rem;
+            border-right: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .trust-item:last-child { border-right: none; }
+        .trust-item span { font-size: 1.4rem; }
+
+        /* ── SECTIONS ── */
+        .section { padding: 4rem 2rem; }
+        .section-inner { max-width: 1000px; margin: 0 auto; }
+
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--green-mid);
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-family: 'Merriweather', serif;
+            font-size: 1.9rem;
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        /* ── SERVICES ── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-light);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .service-card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .service-card h3 { font-size: 1.1rem; color: var(--green-dark); margin-bottom: 0.5rem; font-weight: 700; }
+        .service-card p { font-size: 0.9rem; color: var(--text-light); }
+
+        /* ── ABOUT ── */
+        .about-section { background: white; }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+
+        .about-img img { width: 100%; display: block; }
+
+        .about-text p { color: var(--text-light); margin-bottom: 1rem; font-size: 1rem; }
+
+        .credentials {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            background: var(--cream);
+            border-radius: 8px;
+        }
+
+        .credentials img { height: 65px; width: auto; }
+
+        .credentials-text { font-size: 0.9rem; color: var(--text-light); }
+        .credentials-text strong { color: var(--green-dark); display: block; margin-bottom: 0.2rem; }
+
+        /* ── CONTACT ── */
+        .contact-section { background: var(--green-dark); color: white; }
+        .contact-section h2 { color: white; }
+        .contact-section .section-label { color: #a8e6a0; }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-block h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a8e6a0;
+            margin-bottom: 0.75rem;
+        }
+
+        .phone-number {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: white;
+            display: block;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.5px;
+        }
+
+        .phone-number:hover { color: var(--green-light); }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .contact-detail span { font-size: 1.1rem; margin-top: 1px; }
+
+        .areas-list {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            line-height: 1.9;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #1a3a1b;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.82rem;
+        }
+
+        footer a { color: rgba(255,255,255,0.5); }
+        footer a:hover { color: white; }
+
+        /* ── BACK LINK ── */
+        .back-link {
+            background: var(--cream-dark);
+            padding: 0.6rem 2rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .back-link a { color: var(--green-dark); font-weight: 600; }
+        .back-link a:hover { text-decoration: underline; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .hero { height: 380px; }
+            .hero-overlay { padding: 2rem; }
+            .hero-content h1 { font-size: 1.8rem; }
+            .services-grid { grid-template-columns: 1fr 1fr; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .trust-item { padding: 0.8rem 1.2rem; font-size: 0.85rem; }
+            nav { flex-wrap: wrap; padding: 0.5rem 1rem; }
+            .nav-links { gap: 0; }
+            .nav-links a { padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 1.5rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .hero-btns { flex-direction: column; }
+            .phone-number { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back to opencrabby -->
+    <div class="back-link">
+        Example project by <a href="/">opencrabby.com</a> &mdash; <a href="/examples">← Back to examples</a>
+    </div>
+
+    <!-- Top bar -->
+    <div class="topbar">
+        📞 Call Steve now for a free quote: <a href="tel:01162477708">0116 247 7708</a> &nbsp;|&nbsp; <a href="tel:07931191927">07931 191 927</a>
+    </div>
+
+    <!-- Nav -->
+    <nav>
+        <a href="#" class="nav-logo">
+            <div class="nav-logo-icon">🌳</div>
+            <div>
+                <div class="nav-logo-text">Apples to Oaks</div>
+                <div class="nav-logo-sub">Tree Care · Leicester</div>
+            </div>
+        </a>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#about">About Steve</a>
+            <a href="#contact">Areas</a>
+            <a href="tel:01162477708" class="btn nav-call">📞 Free Quote</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="hero">
+        <img src="img/hero-trees.jpg" alt="Professionally shaped trees by Apples to Oaks Tree Care">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1>Professional Tree Surgery in Leicester &amp; Surrounding Areas</h1>
+                <p>Fully qualified, fully insured. Free surveys and quotations. No job too small.</p>
+                <div class="hero-btns">
+                    <a href="tel:01162477708" class="btn btn-primary">📞 0116 247 7708</a>
+                    <a href="#services" class="btn btn-outline">Our Services ↓</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trust bar -->
+    <div class="trust-bar">
+        <div class="trust-item"><span>✅</span> Fully Qualified</div>
+        <div class="trust-item"><span>🛡️</span> Fully Insured</div>
+        <div class="trust-item"><span>💬</span> Free Surveys &amp; Quotes</div>
+        <div class="trust-item"><span>🏡</span> Domestic &amp; Commercial</div>
+        <div class="trust-item"><span>♻️</span> All Waste Removed</div>
+    </div>
+
+    <!-- Services -->
+    <div class="section" id="services">
+        <div class="section-inner">
+            <div class="section-label">What We Do</div>
+            <h2>Our Tree Care Services</h2>
+            <p style="color:var(--text-light); max-width:600px;">We provide a full range of tree surgery and garden services for homeowners and businesses across Leicestershire. Quotes available seven days a week.</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="icon">🪓</div>
+                    <h3>Tree Felling</h3>
+                    <p>Complete removal of a tree to ground level, safely lowered in sections using ropes and harnesses where needed.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">✂️</div>
+                    <h3>Crown Reduction</h3>
+                    <p>Reducing the overall size of the crown to lessen wind resistance and allow more light into your garden.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🌿</div>
+                    <h3>Crown Thinning</h3>
+                    <p>Selective removal of excess branches when a tree has become too thick, restoring light to plants below.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">⚠️</div>
+                    <h3>Dead Branch Removal</h3>
+                    <p>Safe removal of dead and dangerous branches to protect people and property.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🌳</div>
+                    <h3>Shaping &amp; Pruning</h3>
+                    <p>Careful shaping to improve the appearance and health of your trees and hedges.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🌱</div>
+                    <h3>Hedge Trimming</h3>
+                    <p>Regular trimming of leylandii and all other hedges. Essential for keeping fast-growing hedges under control.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🪨</div>
+                    <h3>Stump Grinding</h3>
+                    <p>We arrange stump grinding with a trusted local contractor, leaving your garden clear and tidy.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🧹</div>
+                    <h3>Garden &amp; Site Clearance</h3>
+                    <p>Clearance of green vegetation prior to landscaping or building projects. All waste fully removed.</p>
+                </div>
+                <div class="service-card">
+                    <div class="icon">🪵</div>
+                    <h3>Logs, Woodchip &amp; Mulch</h3>
+                    <p>We can supply logs, mulch and woodchip from cleared trees as requested.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Steve -->
+    <div class="section about-section" id="about">
+        <div class="section-inner">
+            <div class="about-grid">
+                <div class="about-img">
+                    <img src="img/van-work.jpg" alt="Apples to Oaks team at work">
+                </div>
+                <div class="about-text">
+                    <div class="section-label">About the Company</div>
+                    <h2>Meet Steve Maloy</h2>
+                    <p>Apples to Oaks Tree Care is a small, friendly business based in Glen Parva, Leicester — managed and run by Steve Maloy.</p>
+                    <p>Steve started his working life in the motor trade before making the leap to the great outdoors and tree surgery. He attained his NPTC qualifications at Brooksby College, Melton Mowbray and is a proud member of the International Society of Arboriculture.</p>
+                    <p>Steve personally attends every site visit to give advice and recommend work — always without obligation. Quotes are available seven days a week.</p>
+                    <div class="credentials">
+                        <img src="img/isa-logo.jpg" alt="International Society of Arboriculture member">
+                        <div class="credentials-text">
+                            <strong>ISA Member</strong>
+                            International Society of Arboriculture — committed to the care and preservation of trees.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="section contact-section" id="contact">
+        <div class="section-inner">
+            <div class="section-label">Get in Touch</div>
+            <h2>Request a Free Quote</h2>
+            <p style="opacity:0.85;">Steve is happy to visit your property, assess your trees and give honest advice — completely free and with no obligation to proceed.</p>
+
+            <div class="contact-grid">
+                <div class="contact-block">
+                    <h3>📞 Call or Text Steve</h3>
+                    <a href="tel:01162477708" class="phone-number">0116 247 7708</a>
+                    <a href="tel:07931191927" class="phone-number">07931 191 927</a>
+                    <div class="contact-detail"><span>📧</span> <a href="mailto:applestooaks@btinternet.com">applestooaks@btinternet.com</a></div>
+                    <div class="contact-detail"><span>📍</span> 15 New Bridge Road, Glen Parva, Leicester, LE2 9TG</div>
+                    <div class="contact-detail"><span>💳</span> Payment by cash or cheque</div>
+                </div>
+                <div class="contact-block">
+                    <h3>📍 Areas We Cover</h3>
+                    <div class="areas-list">
+                        Leicester &bull; Blaby &bull; Glen Parva &bull; Wigston<br>
+                        Countesthorpe &bull; Lutterworth &bull; Enderby<br>
+                        Market Harborough &bull; Loughborough<br>
+                        Whetstone &bull; Broughton Astley<br>
+                        Leicester Forest East &bull; Markfield
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © Apples to Oaks Tree Care · Glen Parva, Leicester · <a href="tel:01162477708">0116 247 7708</a>
+        <br><br>
+        <span style="font-size:0.75rem;">Example website built by <a href="/">opencrabby.com</a></span>
+    </footer>
+
+</body>
+</html>
