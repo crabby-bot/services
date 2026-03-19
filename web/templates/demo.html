@@ -51,11 +51,58 @@
             border-bottom: 1px solid rgba(255,255,255,.06);
         }
 
+
         .logo-text {
             font-family: 'Space Mono', monospace;
             font-size: 0.9rem;
             color: var(--glow-cyan);
             letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--muted);
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--glow-green);
+            box-shadow: 0 0 6px var(--glow-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .nav-btn {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--glow-cyan);
+            border: 1px solid rgba(0,210,255,.4);
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all .25s;
+        }
+
+        .nav-btn:hover {
+            background: rgba(0,210,255,.1);
+            box-shadow: 0 0 10px rgba(0,210,255,.2);
         }
 
         .demo-request-form {

@@ -1,24 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Previous head content remains the same -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🦀 OpenCrabby — AI Agents for Real Work</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦀</text></svg>">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap">
     <style>
-        /* Previous styles remain the same */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-        /* Ensure grid is fully responsive */
+        :root {
+            --deep: #070b1a;
+            --glow-cyan: #00d2ff;
+            --glow-orange: #ff8c00;
+            --glow-green: #2ecc71;
+            --foam: #e8f4f8;
+            --muted: rgba(232,244,248,0.45);
+        }
+
+        html, body {
+            background: var(--deep);
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--foam);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            min-height: 100vh;
+        }
+
+        /* NAV */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+            margin-bottom: 2rem;
+        }
+
+        .logo-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--glow-cyan);
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            color: var(--muted);
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--glow-green);
+            box-shadow: 0 0 6px var(--glow-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .nav-btn {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--glow-cyan);
+            border: 1px solid rgba(0,210,255,.4);
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all .25s;
+        }
+
+        .nav-btn:hover {
+            background: rgba(0,210,255,.1);
+            box-shadow: 0 0 10px rgba(0,210,255,.2);
+        }
+
+        /* HERO */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 0 3rem;
+        }
+
+        .papa-frame {
+            width: 180px;
+            height: 180px;
+            border: 1px solid rgba(0,210,255,.3);
+            border-radius: 18px;
+            background: rgba(255,255,255,.025);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-3deg);
+            box-shadow: 0 0 30px rgba(0,210,255,.1);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .papa-frame img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            transform: rotate(3deg);
+        }
+
+        .hero-prompt {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 2.8rem;
+            color: var(--glow-orange);
+            margin-bottom: 0.75rem;
+            line-height: 1.1;
+        }
+
+        .hero-tagline {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 1.8rem;
+        }
+
+        .hero-cta {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--glow-orange);
+            border: 1px solid rgba(255,140,0,.4);
+            padding: 0.6rem 1.4rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all .25s;
+        }
+
+        .hero-cta:hover {
+            background: rgba(255,140,0,.1);
+            box-shadow: 0 0 14px rgba(255,140,0,.2);
+        }
+
+        /* TEAM GRID */
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--muted);
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1rem;
-            margin: 2rem 0;
-            width: 100%;
+            margin-bottom: 3rem;
         }
 
         .card {
             background: rgba(255,255,255,.025);
-            border: 1px solid rgba(255,255,255,.07);
-            border-radius: 18px;
-            padding: 1rem;
+            border: 1px solid rgba(0,210,255,.12);
+            border-radius: 14px;
+            padding: 1.2rem 1rem;
             text-align: center;
             transition: all 0.25s;
             display: flex;
@@ -26,59 +196,98 @@
             align-items: center;
         }
 
+        .card:hover {
+            border-color: rgba(0,210,255,.35);
+            box-shadow: 0 0 20px rgba(0,210,255,.08);
+            transform: translateY(-4px);
+        }
+
         .card-img-wrap {
-            width: 150px;
-            height: 150px;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 90px;
+            height: 90px;
+            margin-bottom: 0.8rem;
         }
 
         .card-img {
-            max-width: 100%;
-            max-height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
 
         .name {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
             font-weight: bold;
-            margin-bottom: 0.5rem;
             color: var(--foam);
-        }
-
-        .desc {
-            color: var(--muted);
-            font-size: 0.8rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .role {
             font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--glow-cyan);
             margin-bottom: 0.5rem;
         }
 
-        @media (max-width: 600px) {
-            .grid {
-                grid-template-columns: 1fr 1fr;
-            }
+        .desc {
+            color: var(--muted);
+            font-size: 0.78rem;
+            line-height: 1.4;
         }
 
-        @media (max-width: 400px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(255,255,255,.06);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--muted);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-title { font-size: 2rem; }
+            .status-indicator { display: none; }
+        }
+
+        @media (max-width: 380px) {
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="page">
-        <!-- Previous header content remains the same -->
+        <div class="header">
+            <a href="/" class="logo-text">OPENCRABBY.COM</a>
+            <div class="nav-right">
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    SYSTEMS ONLINE
+                </div>
+                <a href="/demo" class="nav-btn">TRY DEMO →</a>
+            </div>
+        </div>
+
+        <div class="hero">
+            <div class="papa-frame">
+                <img src="/static/img/crabs/papa.png" alt="Papa Crab">
+            </div>
+            <div class="hero-prompt">// ROOT@OPENCRABBY ~ PAPA CRAB</div>
+            <div class="hero-title">OpenCrabby</div>
+            <div class="hero-tagline">// raising the next generation of digital crabs 🦀</div>
+            <a href="/demo" class="hero-cta">✦ try the demo →</a>
+        </div>
+
+        <div class="section-label">// THE TEAM</div>
 
         <div class="grid">
-            <div class="card" style="--c:#e63946;">
+            <div class="card">
                 <div class="card-img-wrap">
                     <img src="/static/img/crabs/snappy.png" class="card-img" alt="Snappy">
                 </div>
@@ -86,8 +295,7 @@
                 <div class="role">Bug Bounty Hunter</div>
                 <div class="desc">Finds vulnerabilities before the bad guys do. Runs nightly red-team audits.</div>
             </div>
-
-            <div class="card" style="--c:#00d2ff;">
+            <div class="card">
                 <div class="card-img-wrap">
                     <img src="/static/img/crabs/crabby.png" class="card-img" alt="Crabby">
                 </div>
@@ -95,8 +303,7 @@
                 <div class="role">Personal Assistant</div>
                 <div class="desc">Reads emails, books calendars, remembers everything you forget.</div>
             </div>
-
-            <div class="card" style="--c:#2ecc71;">
+            <div class="card">
                 <div class="card-img-wrap">
                     <img src="/static/img/crabs/clicky.png" class="card-img" alt="Clicky">
                 </div>
@@ -104,8 +311,7 @@
                 <div class="role">Web Developer</div>
                 <div class="desc">Built this page. Ships to develop nightly. Obsessed with animations.</div>
             </div>
-
-            <div class="card" style="--c:#a855f7;">
+            <div class="card">
                 <div class="card-img-wrap">
                     <img src="/static/img/crabs/pipey.png" class="card-img" alt="Pipey">
                 </div>
@@ -113,8 +319,7 @@
                 <div class="role">DevOps Engineer</div>
                 <div class="desc">Keeps servers breathing. Gets paged at 3am. Never complains.</div>
             </div>
-
-            <div class="card" style="--c:#ff9f43;">
+            <div class="card">
                 <div class="card-img-wrap">
                     <img src="/static/img/crabs/shelly.png" class="card-img" alt="Shelly">
                 </div>
@@ -122,8 +327,7 @@
                 <div class="role">Blue Team Defender</div>
                 <div class="desc">Patches vulnerabilities. UFW rules, fail2ban jails. Vigilant.</div>
             </div>
-
-            <div class="card" style="--c:#ec4899;">
+            <div class="card">
                 <div class="card-img-wrap">
                     <img src="/static/img/crabs/mimic.png" class="card-img" alt="Mimic">
                 </div>
@@ -131,8 +335,7 @@
                 <div class="role">Decoy Engineer</div>
                 <div class="desc">Looks like a login page. Logs everything. Bots keep falling for it.</div>
             </div>
-
-            <div class="card" style="--c:#ffd700;">
+            <div class="card">
                 <div class="card-img-wrap">
                     <img src="/static/img/crabs/pinchy.png" class="card-img" alt="Pinchy">
                 </div>
@@ -142,7 +345,7 @@
             </div>
         </div>
 
-        <!-- Rest of the previous content remains the same -->
+        <div class="footer">opencrabby.com · ai agents for real work</div>
     </div>
 </body>
 </html>
