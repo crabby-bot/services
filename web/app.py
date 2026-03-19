@@ -3,10 +3,8 @@ from flask_talisman import Talisman
 import os
 import re
 import logging
-import smtplib
 import json
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import requests as http_requests
 
 app = Flask(__name__)
 
@@ -56,20 +54,29 @@ def is_valid_email(email):
     return re.match(r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", email) is not None
 
 
-def send_email(to_email, subject, body):
+def send_demo_email(requester_email):
+    """Send demo request notification via Resend API.
+    API key and email addresses are read from ~/.secrets/ — never in code."""
     try:
-        with open("/home/crabby/.secrets/smtp_credentials.json") as f:
-            creds = json.load(f)
-        msg = MIMEMultipart()
-        msg["From"] = creds["from_email"]
-        msg["To"] = to_email
-        msg["Subject"] = subject
-        msg.attach(MIMEText(body, "plain"))
-        with smtplib.SMTP(creds["smtp_host"], creds["smtp_port"]) as server:
-            server.starttls()
-            server.login(creds["username"], creds["password"])
-            server.send_message(msg)
-        return True
+        with open("/home/crabby/.secrets/keys.json") as f:
+            keys = json.load(f)
+        api_key = keys["resend_send_only_key"]["value"]
+
+        with open("/home/crabby/.secrets/demo_email_config.json") as f:
+            email_cfg = json.load(f)
+
+        response = http_requests.post(
+            "https://api.resend.com/emails",
+            headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+            json={
+                "from": email_cfg["from"],
+                "to": [email_cfg["to"]],
+                "subject": "New Demo Request — OpenCrabby",
+                "html": f"<p>Demo requested by: <strong>{requester_email}</strong></p>"
+            },
+            timeout=10
+        )
+        return response.status_code == 200
     except Exception as e:
         logging.error(f"Email send error: {e}")
         return False
@@ -125,11 +132,7 @@ def demo_request():
         if not gdpr_consent:
             return jsonify({"status": "error", "message": "GDPR consent required"}), 400
         logging.info(f"Demo request from: {email}")
-        email_sent = send_email(
-            to_email="crabby@opencrabby.com",
-            subject="OpenCrabby Demo Request (GDPR Consent Given)",
-            body=f"Demo request from: {email}\n\nGDPR Consent: Yes"
-        )
+        email_sent = send_demo_email(email)
         if not email_sent:
             return jsonify({"status": "error", "message": "Unable to send email"}), 500
         return jsonify({"status": "success", "message": "Demo request received"})
